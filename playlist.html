@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Playlists</title>
+</head>
+<body>
+    <h1>Your Spotify Playlists</h1>
+    <ul>
+        {% for playlist in playlists %}
+            <li>
+                {{ playlist.name }} - <a href="{{ url_for('download', playlist_id=playlist.id) }}">Download</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
