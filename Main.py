@@ -5,11 +5,13 @@ import spotipy
 from spotipy import SpotifyOAuth
 from pytube import YouTube
 import logging
+from dotenv import load_dotenv
 
+load_dotenv()  # Load environment variables from .env file
 
 # Function to search for a song on YouTube and return the video ID
 def search_youtube(song_title, artist):
-    youtube_api_key = 'AIzaSyDRGfYeWNBlf9i0NDWlZcXSKvMmGrMXGI0'
+    youtube_api_key = os.getenv('YOUTUBE_API_KEY')  # Get from environment
     search_query = f'{song_title} {artist} official lyric video'
     params = {
         'part': 'snippet',
@@ -26,11 +28,6 @@ def search_youtube(song_title, artist):
             return items[0]['id']['videoId']
     return None
 
-
-# Set up your Spotify API credentials
-os.environ['SPOTIPY_CLIENT_ID'] = 'be97332ad2c1491f99646b7a22104898'
-os.environ['SPOTIPY_CLIENT_SECRET'] = '4b38893cb9a94ecfbea77d64b4760379'
-os.environ['SPOTIPY_REDIRECT_URI'] = 'http://localhost:8888/callback'
 
 # Initialize Spotipy with your credentials
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope="playlist-read-private"))
