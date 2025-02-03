@@ -3,5 +3,4 @@ __pycache__/
 *.pyc
 .DS_Store
 .cache
-audioDownloads/
-.git/ 
+audioDownloads/ 
