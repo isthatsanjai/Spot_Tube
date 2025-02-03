@@ -55,7 +55,7 @@ def download_video_as_mp3(link):
     try:
         yt = YouTube(link)
         video = yt.streams.filter(only_audio=True).first()
-        out_file = video.download(output_path="C:/Users\sanja\Downloads")
+        out_file = video.download(output_path="C:/TEMP/Spot-Tube/audioDownloads")
         base, ext = os.path.splitext(out_file)
         new_file = base + '.mp3'
         os.rename(out_file, new_file)
